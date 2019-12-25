@@ -113,60 +113,58 @@ export default {
         input {
             display: none;
         }
-    }
-
-    /* The slider */
-    .slider {
-        position: absolute;
-        cursor: pointer;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        width: 50px;
-        right: 65px;
-        background-color: #ccc;
-        -webkit-transition: .4s;
-        transition: .4s;
-
-        &:before {
+        /* The slider */
+        .slider {
             position: absolute;
-            content: "";
-            height: 17px;
-            width: 17px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 50px;
+            right: 65px;
+            background-color: #ccc;
             -webkit-transition: .4s;
             transition: .4s;
+
+            &:before {
+                position: absolute;
+                content: "";
+                height: 17px;
+                width: 17px;
+                left: 4px;
+                bottom: 4px;
+                background-color: white;
+                -webkit-transition: .4s;
+                transition: .4s;
+            }
+        }
+
+        input {
+            &.default:checked + .slider {
+                background-color: $successBG;
+
+            }
+
+            &:focus + .slider {
+                box-shadow: 0 0 1px #2196F3;
+            }
+
+            &:checked + .slider:before {
+                -webkit-transform: translateX(26px);
+                -ms-transform: translateX(26px);
+                transform: translateX(26px);
+            }
+        }
+
+        /* Rounded sliders */
+        .slider.round {
+            border-radius: 34px;
+
+            &:before {
+                border-radius: 50%;
+            }
         }
     }
-
-    input {
-        &.default:checked + .slider {
-            background-color: $successBG;
-
-        }
-
-        &:focus + .slider {
-            box-shadow: 0 0 1px #2196F3;
-        }
-
-        &:checked + .slider:before {
-            -webkit-transform: translateX(26px);
-            -ms-transform: translateX(26px);
-            transform: translateX(26px);
-        }
-    }
-
-    /* Rounded sliders */
-    .slider.round {
-        border-radius: 34px;
-
-        &:before {
-            border-radius: 50%;
-        }
-    }
-
 }
 </style>

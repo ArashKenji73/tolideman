@@ -6,7 +6,10 @@ import Messages from '@/views/Messages';
 import EditInfos from '@/views/Edit-info';
 import Gallery from '@/views/Gallery';
 import Sellers from '@/views/Sellers';
+
 import Products from '@/views/Products';
+import EditProducts from '@/components/products/edit-product';
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -41,8 +44,21 @@ const routes = [
   {
     path: "/products",
     name: "products",
-    component: Products
+    component: Products,
+    children: [
+      {
+          path: "edit",
+          name: "edit",
+          component: EditProducts
+      }
+    ]    
   },
+
+  // {
+  //   path: "/products/edit",
+  //   name: "edit-products",
+  //   component: EditProducts,
+  // },
 
 ];
 

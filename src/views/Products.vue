@@ -8,7 +8,7 @@
             >
             </Product>
         </div>
-
+      
         <Modal v-show="isModalVisible" @close="closeModal">
             <span slot="header">اضافه کردن محصول جدید</span>
             <span slot="body">
@@ -17,6 +17,17 @@
                         <input type="file" name="product-img" id="product-img-upload" style="display:none"/> 
                     </div>
                     <input class="input" type="text" placeholder="نام محصول">
+                    <label class="switch ">
+                        وضعیت فعال : 
+                        <input type="checkbox" class="default" checked v-model="status">
+                        <span class="slider round"></span>
+                    </label>
+
+                    <label class="switch ">
+                        محصول برتر : 
+                        <input type="checkbox" class="default" checked v-model="status">
+                        <span class="slider round"></span>
+                    </label>
                     <vSelect v-model="category" class="input" :reduce="name => name.id" :options="options" label="name" placeholder='نوع محصول' dir="rtl">
                     </vSelect>
                     <input class="input" type="text" placeholder="قیمت">
@@ -31,7 +42,7 @@
         </Modal> 
 
         <span class="add-product" @click="showModal"><i class="fas fa-plus"></i></span>
-        
+        <router-view></router-view>
     </div>    
 </template>
 <script>
@@ -39,6 +50,7 @@ import $ from "jquery";
 import Product from '@/components/products/product-list';
 import Modal from '@/components/modal';
 import vSelect from 'vue-select';
+// import editp from '@/components/products/edit-product';
 export default {
     data(){
         return{
@@ -84,7 +96,8 @@ export default {
     components:{
         Product,
         Modal,
-        vSelect
+        vSelect,
+        // editp
     },
     methods: {
       showModal() {
@@ -167,6 +180,69 @@ export default {
             }
             .vs__clear {
                 fill: rgb(255, 255, 255);
+            }
+        }
+
+        /* The switch - the box around the slider */
+        .switch {
+            position: relative;
+            display: flex;
+            height: 25px;
+            margin: 15px;
+            justify-content: space-between;
+            input {
+                display: none;
+            }
+            /* The slider */
+            .slider {
+                cursor: pointer;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                width: 50px;
+                right: 65px;
+                background-color: #ccc;
+                -webkit-transition: .4s;
+                transition: .4s;
+
+                &:before {
+                    position: absolute;
+                    content: "";
+                    height: 17px;
+                    width: 17px;
+                    left: 4px;
+                    bottom: 4px;
+                    background-color: white;
+                    -webkit-transition: .4s;
+                    transition: .4s;
+                }
+            }
+
+            input {
+                &.default:checked + .slider {
+                    background-color: $successBG;
+
+                }
+
+                &:focus + .slider {
+                    box-shadow: 0 0 1px #2196F3;
+                }
+
+                &:checked + .slider:before {
+                    -webkit-transform: translateX(26px);
+                    -ms-transform: translateX(26px);
+                    transform: translateX(26px);
+                }
+            }
+
+            /* Rounded sliders */
+            .slider.round {
+                border-radius: 34px;
+
+                &:before {
+                    border-radius: 50%;
+                }
             }
         }
     }
