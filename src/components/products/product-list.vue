@@ -1,27 +1,104 @@
 <template>
-    <div class="product">
-        <div class="body">
-            <span class="name">
-                {{name}}
-            </span>
-            <span class="price">
-                {{humanReadPrice}}
-            </span>
+    <div>
+        <div class="product">
+            <div class="body">
+                <span class="name">
+                    {{name}}
+                </span>
+                <span class="price">
+                    {{humanReadPrice}}
+                </span>
+            </div>
+            <div class="footer">
+                <a @click="showDeleteModal" class="btn-danger">حذف کردن</a>
+                <a @click="showEditModal" class="btn-success">ویرایش</a>
+            </div>
         </div>
-        <div class="footer">
-            <a :href="'/product/delete/'+id" class="btn-danger">حذف کردن</a>
-            <a :href="'/product/edit/'+id" class="btn-success">ویرایش</a>
-        </div>
-    </div>
+        <Modal v-show="isEditModalVisible" @close="closeEditModal">
+            <span slot="header">ویرایش محصول</span>
+            <span slot="body">
+                <form class="add-product-form">
+                    <div class="product-img" @click="openNewProdrImg">
+                        <input type="file" name="product-img" id="product-img-upload" style="display:none"/> 
+                    </div>
+                    <input class="input" type="text" v-model="name" placeholder="نام محصول">
+                    <label class="switch ">
+                        وضعیت فعال : 
+                        <input type="checkbox" class="default" checked v-model="status">
+                        <span class="slider round"></span>
+                    </label>
+
+                    <label class="switch ">
+                        محصول برتر : 
+                        <input type="checkbox" class="default" checked v-model="status">
+                        <span class="slider round"></span>
+                    </label>
+                    <vSelect v-model="type" class="input" :reduce="name => name.id" :options="options" label="name" placeholder='نوع محصول' dir="rtl">
+                    </vSelect>
+                    <input class="input" type="text" placeholder="قیمت">
+                    <input class="input" type="text" placeholder="تخفیف">
+                    <input class="input" type="textarea" placeholder="توضیحات">
+                    {{type}}
+                    <button class="btn-success" type="submit">افزودن</button>
+                </form>
+            </span>
+            <span slot="footer">
+            </span>
+        </Modal> 
+
+        <Modal v-show="isDeleteModalVisible" @close="closeDeleteModal">
+            <span slot="header">Delete</span>
+            <span slot="body">
+                Delete {{name}}
+            </span>
+            <span slot="footer">
+            </span>
+        </Modal> 
+    </div>    
 </template>
 <script>
+import $ from "jquery";
+import Modal from '@/components/modal';
+import vSelect from 'vue-select';
+// import editp from '@/components/products/edit-product';
 export default {
-    props:['name' , 'price' , 'id'],
-    computed:{
-        humanReadPrice(){
-            return this.price.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1"+',');
-        }
-    }
+    data(){
+        return{
+            isEditModalVisible: false,
+            isDeleteModalVisible: false,
+            options : [
+                {id: '1', name: 'بادام'},
+                {id: '2', name: 'انار'},
+                {id: '3', name: 'بادام زمینی'},
+                {id: '4', name: 'انگور'},
+                {id: '5', name: 'درخت'},
+                {id: '6', name: 'بادمجان'},
+
+            ],
+        }    
+    },
+    props:['name' , 'price' , 'id', 'type'],
+    components:{
+        Modal,
+        vSelect,
+    },
+    methods: {
+      showEditModal() {
+        this.isEditModalVisible = true;
+      },
+      closeEditModal() {
+        this.isEditModalVisible = false;
+      },
+      showDeleteModal() {
+        this.isDeleteModalVisible = true;
+      },
+      closeDeleteModal() {
+        this.isDeleteModalVisible = false;
+      },
+      openNewProdrImg(){
+          $('#seller-img-upload').trigger('click');
+      }
+    },
 }
 </script>
 <style lang="scss">

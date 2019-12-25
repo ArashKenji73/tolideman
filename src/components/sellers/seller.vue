@@ -41,7 +41,7 @@ export default {
     font-family: $main-font;
     display: flex;
     flex-direction: column;
-    width: 90%;
+    width: 100%;
     height: 200px;
     margin: 1rem auto;
     border-radius: 10px;

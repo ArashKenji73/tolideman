@@ -5,6 +5,7 @@
                 :name="product.name" 
                 :price="product.price" 
                 :id="product.id"
+                :type="product.type"
             >
             </Product>
         </div>
@@ -40,9 +41,7 @@
                 {{category}}
             </span>
         </Modal> 
-
         <span class="add-product" @click="showModal"><i class="fas fa-plus"></i></span>
-        <router-view></router-view>
     </div>    
 </template>
 <script>
@@ -61,25 +60,29 @@ export default {
                     id:1,
                     image : 'image1',
                     name : 'prod 1',
-                    price : '۱۰۰۰'
+                    price : '۱۰۰۰',
+                    type : '1'
                 },
                 {
                     id:2,
                     image : 'image2',
                     name : 'prod 2',
-                    price : '۱۰۰۰'
+                    price : '۱۰۰۰',
+                    type : '2'
                 },
                 {
                     id:3,
                     image : 'image4',
                     name : 'prod 3',
-                    price : '۱۰۰۰'
+                    price : '۱۰۰۰',
+                    type : '3'
                 },
                 {
                     id:4,
                     image : 'image3',
                     name : 'prod 4',
-                    price : '۱۰۰۰'
+                    price : '۱۰۰۰',
+                    type : '4'
                 },
             ],
             options : [
