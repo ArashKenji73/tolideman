@@ -1,32 +1,35 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
+    <Navbar></Navbar>
+    <router-view></router-view>
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import Navbar from '@/components/navbar';
 
-#nav {
-  padding: 30px;
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+
+export default {
+  components:{
+    Navbar,
+  },
+  created(){
+    AOS.init();
   }
 }
+</script>
+<style lang="scss">
+@import "@/assets/styles/vars.scss";
+
+body{
+  direction: rtl;
+  overflow-x: hidden;
+  background: #d1d1d1;
+  margin-top: $navbarHeight+10px;
+}
+
 </style>

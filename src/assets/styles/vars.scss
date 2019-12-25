@@ -1,0 +1,12 @@
+@font-face {
+    font-family: NavbarFont;
+    src: url('~@/assets/fonts/IRANSans_Light.ttf');
+}
+
+$main-font : NavbarFont;
+$navbarHeight : 55px;
+$navHeaderColor : #582fc0;
+$lightWhiteBG : #f5f5f5;
+$successBG :#2ECC71;
+$errorBg: #E74C3C;
+$warningBG :#F1C40F;
