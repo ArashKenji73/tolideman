@@ -17,13 +17,16 @@
                         <input type="file" name="product-img" id="product-img-upload" style="display:none"/> 
                     </div>
                     <input class="input" type="text" placeholder="نام محصول">
-                    <vSelect v-model="category" class="input" :options="options" label="country" placeholder='نوع محصول' dir="rtl">
+                    <vSelect v-model="category" class="input" :reduce="name => name.id" :options="options" label="name" placeholder='نوع محصول' dir="rtl">
                     </vSelect>
                     <input class="input" type="text" placeholder="قیمت">
                     <input class="input" type="text" placeholder="تخفیف">
                     <input class="input" type="textarea" placeholder="توضیحات">
                     <button class="btn-success" type="submit">افزودن</button>
                 </form>
+            </span>
+            <span slot="footer">
+                {{category}}
             </span>
         </Modal> 
 
@@ -67,7 +70,15 @@ export default {
                     price : '۱۰۰۰'
                 },
             ],
-            options : [{code: 'CA', country: 'Canada'}],
+            options : [
+                {id: '1', name: 'بادام'},
+                {id: '2', name: 'انار'},
+                {id: '3', name: 'بادام زمینی'},
+                {id: '4', name: 'انگور'},
+                {id: '5', name: 'درخت'},
+                {id: '6', name: 'بادمجان'},
+
+            ],
         }
     },
     components:{
