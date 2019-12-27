@@ -26,7 +26,7 @@ export default {
     },
     methods:{
       activeClass(e){
-        console.log(e.target.className);
+        //console.log(e.target.className);
         this.ActiveComponent = e.target.className;
         $('.messages-tabs span').removeClass('active');
         $(e.target).addClass('active');
