@@ -10,10 +10,6 @@
         </div>
         <div class="info">
             <span><i class="fas fa-envelope"></i></span>
-            <span>نوشته پیشفرض</span>
-        </div>
-        <div class="info">
-            <span><i class="fas fa-comment"></i></span>
             <span><a href="mailto:info@tolideman.ir?Subject= ">info@tolideman.ir</a></span>
         </div>
 
