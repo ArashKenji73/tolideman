@@ -15,15 +15,15 @@
     <router-link to="/products">
       <mainBlock data-aos-delay="250" data-aos="fade-left" text="محصولات" iconClassName="fas fa-dice-d6" color="#5B2C6F"></mainBlock>
     </router-link>
-    <router-link to="/a">
+    <router-link to="/chats-history">
       <mainBlock data-aos-delay="300" data-aos="fade-left" text="تاریخچه چت" iconClassName="fas fa-comments" color="#BA4A00"></mainBlock>
     </router-link>
-    <router-link to="/c">
+    <router-link to="/statistics">
       <mainBlock data-aos-delay="350" data-aos="fade-left" text="آمار" iconClassName="fas fa-chart-line" color="#2C3E50"></mainBlock>
     </router-link>
-    <!-- <router-link to="/d" data-aos-delay="400" data-aos="fade-left">
+    <router-link to="/d" data-aos-delay="400" data-aos="fade-left">
       <mainBlock text="تماس با ما" iconClassName="fas fa-mobile-alt" color="#566573"></mainBlock>
-    </router-link> -->
+    </router-link>
   </div>
 </template>
 <script>
@@ -36,7 +36,8 @@ export default {
 </script>
 <style lang="scss">
 .home{
-  height: 100vh;
+  padding: 1px 15px;
+  height: 120vh;
   a{
     display: block;
   }

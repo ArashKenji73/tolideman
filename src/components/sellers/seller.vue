@@ -4,7 +4,7 @@
             <div class="seller-profile-img"></div>
             <div class="seller-info">
                 <span class="seller-name">
-                    دهقان
+                    {{name}} {{family}}
                 </span>
                 <span v-if="status" class="tag active">
                     فعال
@@ -21,18 +21,84 @@
             </div>
         </div>
         <div class="footer">
-            <a href="" class="btn-danger">حذف کردن</a>
-            <a href="" class="btn-success">ویرایش</a>
+            <button @click="showDeleteModal" class="btn btn-danger">حذف کردن</button>
+            <button @click="showEditModal" class="btn btn-success">ویرایش</button>
         </div>
+
+
+        <!-- Edit Seller Modal -->
+        <EditSellerModal v-show="isEditModalVisible" @close="closeEditModal">
+            <span slot="header">ویرایش فروشنده</span>
+            <span slot="body">
+                <form class="add-seller-form">
+                    <div class="seller-img" @click="openNewSellerrImg">
+                        <input type="file" name="seller-img" id="edit-seller-img-upload" style="display:none"/> 
+                    </div>
+                    <input class="input" type="text" v-model="name" placeholder="نام فروشنده">
+                    <input class="input" v-model="family" type="text" placeholder="نام خانوادگی">
+                    <vSelect v-model="sex" class="input" :reduce="name => name.id" :options="options" label="name" placeholder='جنسیت' dir="rtl">
+                    </vSelect>
+                    <input v-model="phone" class="input" type="tel" placeholder="شماره همراه">
+                    <input v-model="nationalcode" class="input" type="number" placeholder="کد ملی">
+                    <button class="btn-success" type="submit">افزودن</button>
+                </form>
+            </span>
+        </EditSellerModal>
+
+        <!-- Delete seller modal -->
+        <DeleteSellerModal v-show="isDeleteModalVisible" @close="closeDeleteModal">
+            <span slot="header">فروشنده {{name}} {{family}} پاک شود؟</span>
+            <span slot="body">
+                <form class="add-seller-form">
+                    <button class="btn btn-danger" type="submit">پاک کردن</button>
+                </form>
+            </span>
+        </DeleteSellerModal>  
     </div>
 </template>
 <script>
+import $ from "jquery";
+import EditSellerModal from '@/components/modal';
+import DeleteSellerModal from '@/components/modal';
+import vSelect from 'vue-select';
 export default {
     data(){
         return{
-            status: true
+            isEditModalVisible: false,
+            isDeleteModalVisible: false,
+
+            options : [
+                {id: '1', name: 'مرد'},
+                {id: '2', name: 'زن'},
+            ],
         }
-    }
+    },
+    props:['name' , 'family' , 'phone', 'nationalcode' , 'sex' , 'status'],
+    components:{
+        EditSellerModal,
+        DeleteSellerModal,
+        vSelect,
+    },
+    methods: {
+      showEditModal() {
+        this.isEditModalVisible = true;
+      },
+      closeEditModal() {
+        this.isEditModalVisible = false;
+      },
+
+      showDeleteModal() {
+        this.isDeleteModalVisible = true;
+      },
+      closeDeleteModal() {
+        this.isDeleteModalVisible = false;
+      },
+
+
+      openNewSellerrImg(){
+        $('#edit-seller-img-upload').trigger('click');
+      }
+    },
 }
 </script>
 <style lang="scss">
@@ -57,7 +123,7 @@ export default {
             width: 70px;
             height: 70px;
             border-radius: 100%;
-            background: red;
+            background: #d1d1d1;
         }
         .seller-info{
             
@@ -96,7 +162,7 @@ export default {
         padding: 10px;
         display: flex;
         align-items: center;
-        a{
+        button{
             flex-grow: 1;
             text-align: center;
             padding: 5px;

@@ -10,9 +10,10 @@
                 </span>
             </div>
             <div class="footer">
-                <a @click="showDeleteModal" class="btn-danger">حذف کردن</a>
-                <a @click="showEditModal" class="btn-success">ویرایش</a>
+                <button @click="showDeleteModal" class="btn btn-danger">حذف کردن</button>
+                <button @click="showEditModal" class="btn btn-success">ویرایش</button>
             </div>
+            
         </div>
         <Modal v-show="isEditModalVisible" @close="closeEditModal">
             <span slot="header">ویرایش محصول</span>
@@ -73,7 +74,6 @@ export default {
                 {id: '4', name: 'انگور'},
                 {id: '5', name: 'درخت'},
                 {id: '6', name: 'بادمجان'},
-
             ],
         }    
     },
@@ -107,7 +107,7 @@ export default {
     font-family: $main-font;
     width: 100%;
     height: 200px;
-    background: #607D8B;
+    background: #17202A;
     margin: 1rem auto;
     border-radius: 10px;
     display: flex;
@@ -139,14 +139,14 @@ export default {
     }
     .footer{
         height: 30%;
-        border-radius: 0px 0px 10px 10px;
+        width: 100%;
+        padding: 10px;
         display: flex;
         align-items: center;
-        padding: 15px;
-        a{
+        button{
             flex-grow: 1;
             text-align: center;
-            padding: 10px;
+            padding: 5px;
         }
     }
 }

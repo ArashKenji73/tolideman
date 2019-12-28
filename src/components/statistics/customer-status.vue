@@ -1,9 +1,11 @@
 <template>
-    <div>edit product</div>
+    <div>
+        customer status
+    </div>
 </template>
 <script>
 export default {
-  
+    
 }
 </script>
 <style lang="scss">

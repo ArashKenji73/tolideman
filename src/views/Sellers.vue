@@ -1,11 +1,25 @@
 <template>
-    <div data-aos="fade-down" class="product-wrapper">
-        <Seller></Seller>
+    <div data-aos="fade-down" class="seller-wrapper">
+        <div v-for="(seller , i) in sellers" :key="i">
+            <Seller 
+                :name=seller.name 
+                :image=seller.img
+                :status=seller.status
+                :family=seller.family
+                :phone=seller.phone
+                :nationalcode=seller.nationalcode
+                :sex=seller.sex
+            ></Seller>
+        </div>
+
+        <!-- add seller modal button -->
+        <span class="add-seller" @click="showModal"><i class="fas fa-plus"></i></span>
+        <!-- add seller modal -->
         <Modal v-show="isModalVisible" @close="closeModal">
             <span slot="header">افزودن فروشنده</span>
             <span slot="body">
-                <form class="add-product-form">
-                    <div class="product-img" @click="openNewProdrImg">
+                <form class="add-seller-form">
+                    <div class="seller-img" @click="openNewSellerrImg">
                         <input type="file" name="seller-img" id="seller-img-upload" style="display:none"/> 
                     </div>
                     <input class="input" type="text" placeholder="نام فروشنده">
@@ -21,7 +35,6 @@
                 {{sex}}
             </span>
         </Modal> 
-        <span class="add-product" @click="showModal"><i class="fas fa-plus"></i></span>
     </div>    
 </template>
 <script>
@@ -33,34 +46,27 @@ import vSelect from 'vue-select';
 export default {
     data(){
         return{
-            isModalVisible: false,
-            sex:'',
-            products:[
+            sellers:[
                 {
-                    id:1,
-                    sex : 'image1',
-                    name : 'prod 1',
-                    price : '۱۰۰۰'
+                    name: 'آرش', 
+                    family : 'رضاوندی', 
+                    sex:'1', 
+                    nationalcode: '001775173',
+                    phone: '09306939653',
+                    status: true,
                 },
+
                 {
-                    id:2,
-                    image : 'image2',
-                    name : 'prod 2',
-                    price : '۱۰۰۰'
-                },
-                {
-                    id:3,
-                    image : 'image4',
-                    name : 'prod 3',
-                    price : '۱۰۰۰'
-                },
-                {
-                    id:4,
-                    image : 'image3',
-                    name : 'prod 4',
-                    price : '۱۰۰۰'
+                    name: 'میترا', 
+                    family : 'رضاوندی', 
+                    sex:'2', 
+                    nationalcode: '001775173',
+                    phone: '09306939653',
+                    status: false,
                 },
             ],
+            isModalVisible: false,
+            sex:'',
             options : [
                 {id: '1', name: 'مرد'},
                 {id: '2', name: 'زن'},
@@ -80,7 +86,7 @@ export default {
       closeModal() {
         this.isModalVisible = false;
       },
-      openNewProdrImg(){
+      openNewSellerrImg(){
           $('#seller-img-upload').trigger('click');
       }
     },
@@ -88,10 +94,10 @@ export default {
 </script>
 <style lang="scss">
 @import "@/assets/styles/vars.scss";
-    .product-wrapper{
+    .seller-wrapper{
         text-align: right;
         padding: 10px 15px;
-        .add-product{
+        .add-seller{
             background: $warningBG;
             display: flex;
             justify-content: center;
@@ -106,7 +112,7 @@ export default {
             }
         }
     }
-    .add-product-form{
+    .add-seller-form{
         display: flex;
         flex-direction: column;
 
@@ -122,7 +128,7 @@ export default {
             height: 55px;
             border-radius: 10px;
         }
-        .product-img{
+        .seller-img{
             width: 100px;
             height: 100px;
             border-radius: 100%;

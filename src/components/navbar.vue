@@ -37,35 +37,29 @@
           پیام ها
         </router-link>
       </li> 
-      <li>
-        <a href="">
-          <i class="fas fa-chart-line"></i>
-          آمار 
-        </a>
-      </li>
       <li @click="fadeMenu">
         <router-link to="/gallery">
           <i class="far fa-images"></i>
           گالری فروشگاه 
         </router-link>
       </li>
-      <li>
-        <a href="">
+      <li @click="fadeMenu">
+        <router-link to="/statistics">
           <i class="fas fa-chart-line"></i>
           آمار 
-        </a>
+        </router-link>
       </li>
-      <li>
-        <a href="">
+      <li @click="fadeMenu">
+        <router-link to="/chats-history">
           <i class="fas fa-comments"></i>
           تاریخچه چت
-        </a>
+        </router-link>
       </li>
-      <li>
-        <a href="">
+      <li @click="fadeMenu">
+        <router-link to="/about-us">
           <i class="fas fa-mobile-alt"></i>
           تماس با ما
-        </a>
+        </router-link>
       </li>    
     </ul>
   </nav>
@@ -87,7 +81,14 @@ export default {
         case 'sellers':
           return 'فروشندگان';
         case 'products':
-          return 'محصولات';      
+          return 'محصولات';   
+        case 'chats-history':
+          return 'تاریخچه چت'; 
+        case 'statistics':
+          return 'آمار';
+        case 'about-us':
+          return 'درباره ما';
+                   
       }
       return 'صفحه اصلی'
     }
@@ -112,8 +113,6 @@ export default {
 <style lang="scss">
 @import 'node_modules/bootstrap/scss/bootstrap';
 //@import 'node_modules/bootstrap-vue/src/index.scss';
-
-
 @import "@/assets/styles/vars.scss";
 
 nav{

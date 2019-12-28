@@ -24,7 +24,7 @@ export default {
     background: $lightWhiteBG;
     box-sizing: border-box;
     border-right: 15px;
-    margin: 10px;
+    margin: 1rem 0px;
     border-right: 15px solid;
     border-radius: 10px;
     cursor: pointer;
