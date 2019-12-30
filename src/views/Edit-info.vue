@@ -57,4 +57,14 @@ export default {
             border-radius: 20px;
         }
     }
+
+@media only screen and (min-width: 577px) {
+    .edit-infos-tabs{
+        padding: 10px;
+        span{
+            flex-grow: 1;
+            text-align: center;
+        }
+    }
+}    
 </style>

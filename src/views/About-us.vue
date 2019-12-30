@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="info-wrapper">
         <div class="info">
             <span><i class="fas fa-comment"></i></span>
             <span>نوشته پیشفرض</span>
@@ -53,13 +53,15 @@ export default {
 </script>
 <style lang="scss">
 @import "@/assets/styles/vars.scss";
+.info-wrapper{
+    padding: 1rem;
+}
 .info{
     font-family: $main-font;
     border-radius: 10px;
     box-shadow: 0px 0px 10px grey;
     height: 50px;
-    width: 90%;
-    margin: 1rem auto;
+    margin: 1rem 0px;
     display: flex;
     // justify-content: space-between;
     background: $lightWhiteBG;
@@ -82,8 +84,6 @@ export default {
     font-family: $main-font;
     color: #fff;
     background: $navHeaderColor;
-    width: 90%;
-    margin: 0 auto;
     border: 0px;
     border-radius: 10px;
     padding: 0.375rem 0.75rem;
@@ -105,4 +105,11 @@ export default {
         border-radius: 10px;
     }
 }
+
+
+@media only screen and (min-width: 577px) {
+    .info-wrapper{
+        padding: 1rem 30%;
+    }
+}    
 </style>

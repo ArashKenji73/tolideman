@@ -92,5 +92,9 @@ export default {
             font-size: 1.5rem;
         }
     }
-
+@media only screen and (min-width: 577px) {
+    .manager-form{
+      padding: 0px 30%;
+    }
+} 
 </style>

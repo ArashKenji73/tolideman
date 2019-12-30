@@ -1,48 +1,51 @@
 <template>
-    <div data-aos="fade-down" class="product-wrapper">
-        <div v-for="(product , i) in products" :key="i">
-            <Product 
-                :name="product.name" 
-                :price="product.price" 
-                :id="product.id"
-                :type="product.type"
-            >
-            </Product>
-        </div>
-      
-        <Modal v-show="isModalVisible" @close="closeModal">
-            <span slot="header">اضافه کردن محصول جدید</span>
-            <span slot="body">
-                <form class="add-product-form">
-                    <div class="product-img" @click="openNewProdrImg">
-                        <input type="file" name="product-img" id="product-img-upload" style="display:none"/> 
-                    </div>
-                    <input class="input" type="text" placeholder="نام محصول">
-                    <label class="switch ">
-                        وضعیت فعال : 
-                        <input type="checkbox" class="default" checked v-model="status">
-                        <span class="slider round"></span>
-                    </label>
+    <div>
+        <div data-aos="fade-down" class="product-wrapper">
+            <div v-for="(product , i) in products" :key="i" class="product">
+                <Product 
+                    :name="product.name" 
+                    :price="product.price" 
+                    :id="product.id"
+                    :type="product.type"
+                >
+                </Product>
+            </div>
+        </div> 
+  
+    <span class="add-button" @click="showModal"><i class="fas fa-plus"></i></span>
 
-                    <label class="switch ">
-                        محصول برتر : 
-                        <input type="checkbox" class="default" checked v-model="status">
-                        <span class="slider round"></span>
-                    </label>
-                    <vSelect v-model="category" class="input" :reduce="name => name.id" :options="options" label="name" placeholder='نوع محصول' dir="rtl">
-                    </vSelect>
-                    <input class="input" type="text" placeholder="قیمت">
-                    <input class="input" type="text" placeholder="تخفیف">
-                    <input class="input" type="textarea" placeholder="توضیحات">
-                    <button class="btn-success" type="submit">افزودن</button>
-                </form>
-            </span>
-            <span slot="footer">
-                {{category}}
-            </span>
-        </Modal> 
-        <span class="add-product" @click="showModal"><i class="fas fa-plus"></i></span>
-    </div>    
+    <Modal v-show="isModalVisible" @close="closeModal">
+        <span slot="header">اضافه کردن محصول جدید</span>
+        <span slot="body">
+            <form class="add-product-form">
+                <div class="product-img" @click="openNewProdrImg">
+                    <input type="file" name="product-img" id="product-img-upload" style="display:none"/> 
+                </div>
+                <input class="input" type="text" placeholder="نام محصول">
+                <label class="switch ">
+                    وضعیت فعال : 
+                    <input type="checkbox" class="default" checked v-model="status">
+                    <span class="slider round"></span>
+                </label>
+
+                <label class="switch ">
+                    محصول برتر : 
+                    <input type="checkbox" class="default" checked v-model="status">
+                    <span class="slider round"></span>
+                </label>
+                <vSelect v-model="category" class="input" :reduce="name => name.id" :options="options" label="name" placeholder='نوع محصول' dir="rtl">
+                </vSelect>
+                <input class="input" type="text" placeholder="قیمت">
+                <input class="input" type="text" placeholder="تخفیف">
+                <input class="input" type="textarea" placeholder="توضیحات">
+                <button class="btn-success" type="submit">افزودن</button>
+            </form>
+        </span>
+        <span slot="footer">
+            {{category}}
+        </span>
+    </Modal>    
+    </div>   
 </template>
 <script>
 import $ from "jquery";
@@ -120,20 +123,6 @@ export default {
     .product-wrapper{
         text-align: right;
         padding: 10px 15px;
-        .add-product{
-            background: $warningBG;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 70px;
-            height: 70px;
-            border-radius: 100%;
-            box-shadow: 0px 0px 10px grey;
-            svg{
-                font-size: 3rem;
-                color: #fff;
-            }
-        }
     }
     .add-product-form{
         display: flex;
@@ -249,4 +238,16 @@ export default {
             }
         }
     }
+
+@media only screen and (min-width: 577px) {
+    .product-wrapper{
+        display: flex;
+        flex-wrap: wrap;
+        .product{
+            width: 30%;
+            margin: 1%;
+        }
+    }
+}
+
 </style>

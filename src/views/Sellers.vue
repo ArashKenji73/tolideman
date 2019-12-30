@@ -1,19 +1,21 @@
 <template>
-    <div data-aos="fade-down" class="seller-wrapper">
-        <div v-for="(seller , i) in sellers" :key="i">
-            <Seller 
-                :name=seller.name 
-                :image=seller.img
-                :status=seller.status
-                :family=seller.family
-                :phone=seller.phone
-                :nationalcode=seller.nationalcode
-                :sex=seller.sex
-            ></Seller>
+    <div data-aos="fade-down">
+        <div class="seller-wrapper">
+            <div v-for="(seller , i) in sellers" :key="i" class="seller">
+                <Seller
+                    :name=seller.name 
+                    :image=seller.img
+                    :status=seller.status
+                    :family=seller.family
+                    :phone=seller.phone
+                    :nationalcode=seller.nationalcode
+                    :sex=seller.sex
+                ></Seller>
+            </div>
         </div>
 
         <!-- add seller modal button -->
-        <span class="add-seller" @click="showModal"><i class="fas fa-plus"></i></span>
+        <span class="add-button" @click="showModal"><i class="fas fa-plus"></i></span>
         <!-- add seller modal -->
         <Modal v-show="isModalVisible" @close="closeModal">
             <span slot="header">افزودن فروشنده</span>
@@ -64,6 +66,7 @@ export default {
                     phone: '09306939653',
                     status: false,
                 },
+                
             ],
             isModalVisible: false,
             sex:'',
@@ -97,25 +100,15 @@ export default {
     .seller-wrapper{
         text-align: right;
         padding: 10px 15px;
-        .add-seller{
-            background: $warningBG;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 70px;
-            height: 70px;
-            border-radius: 100%;
-            box-shadow: 0px 0px 10px grey;
-            svg{
-                font-size: 3rem;
-                color: #fff;
-            }
+        display: flex;
+        flex-wrap: wrap;
+        .seller{
+            width: 100%;
         }
     }
     .add-seller-form{
         display: flex;
         flex-direction: column;
-
         .input{
             padding: 10px;
             background: $lightWhiteBG;
@@ -226,4 +219,13 @@ export default {
             }
         }
     }
+
+@media only screen and (min-width: 577px) {
+    .seller-wrapper{
+        .seller{
+            width: 31%;
+            margin: 1%;
+        }
+    }
+}    
 </style>

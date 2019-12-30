@@ -59,6 +59,8 @@ export default {
         span{
             padding: 10px 20px;
             font-size: 0.8rem;
+            flex-grow: 1;
+            text-align: center;
         }
         .active{
             background: #3a1f7d;

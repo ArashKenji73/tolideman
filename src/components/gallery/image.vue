@@ -1,20 +1,24 @@
 <template>
-    <div data-aos="fade-down">
-        <div class="image-options">
-            <img src="https://via.placeholder.com/1000/FFFF00">
-            <div class="option" >
-                <button @click="showModal">حذف تصویر</button>
-            </div>
+    <div class="image-box">
+        <img src="https://via.placeholder.com/1000/FFFF00">
+        <div class="option" >
+            <button @click="showModal">حذف تصویر</button>
         </div>
-        
+
+
         <Modal v-show="isModalVisible" @close="closeModal">
             <span slot="header">آیا مایل به پاک کردن این عکس هستید</span>
-            <span slot="body"></span>
-            <span slot="footer"> 
-                <a :href="'/image/delete/' + id" class="btn-success">بله</a>
-                <a @click="closeModal" class="btn-danger">خیر</a>
+            <span slot="body">
+                {{id}}
+                <form class="delete-image-form">
+                    <button class="btn btn-danger" type="submit">پاک کردن</button>
+                    <button class="btn btn-info">انصراف</button>
+                </form>
             </span>
-        </Modal>    
+            <span slot="footer"> 
+
+            </span>
+        </Modal> 
     </div>
 </template>
 <script>
@@ -41,12 +45,11 @@ export default {
 </script>
 <style lang="scss">
 @import "@/assets/styles/vars.scss";
-.image-options{
+.image-box{
     font-family: $main-font;
     position: relative;
-    width: 90%;
     height: 200px;
-    margin: 1rem auto;
+    margin: 1rem 0px;
     img{
         position: absolute;
         top: 0px;
@@ -77,6 +80,14 @@ export default {
             color: #fff;
             background: $errorBg;
         }
+    }
+}
+
+
+.delete-image-form{
+    display: flex;
+    button{
+        flex-grow: 1;
     }
 }
 </style>

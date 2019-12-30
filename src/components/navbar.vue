@@ -60,7 +60,13 @@
           <i class="fas fa-mobile-alt"></i>
           تماس با ما
         </router-link>
-      </li>    
+      </li>   
+      <li @click="fadeMenu">
+        <router-link to="/log-out">
+          <i class="fas fa-power-off"></i>
+          خروج
+        </router-link>
+      </li>  
     </ul>
   </nav>
 </template>
@@ -88,7 +94,6 @@ export default {
           return 'آمار';
         case 'about-us':
           return 'درباره ما';
-                   
       }
       return 'صفحه اصلی'
     }
@@ -154,7 +159,7 @@ nav{
       // transform: translateY(-50%);
       right: 0px;
       font-size: 25px;
-      padding: 10px;
+      padding: 19px;
     }
   }
   .main-nav{
@@ -169,6 +174,12 @@ nav{
     transform: translateX(100%);
     transition: transform 0.3s ease-in;
     z-index: 999;
+
+    .router-link-active{
+      background: $navHeaderColor;
+      color: #fff;
+      svg{color: #fff}
+    }
     &.slide-in{
       transform: translateX(0%) !important;
     }
@@ -195,12 +206,12 @@ nav{
       align-items: center;
       height: 15%;
       width: 100%;
-      background: #3e61c3;
+      background: $navHeaderColor;
       padding: 15px;
       .profile-img{
         width: 60px;
         height: 60px;
-        background: red;
+        background: #ddd;
         border-radius: 100%;
         margin-left: 15px;
       }
@@ -214,4 +225,12 @@ nav{
 }
 
 
+
+@media only screen and (min-width: 577px) {
+  nav{
+    .main-nav{
+      width: 25%;
+    }
+  }
+}
 </style>

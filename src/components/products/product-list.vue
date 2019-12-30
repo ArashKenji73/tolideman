@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="product">
+        <div class="product-box">
             <div class="body">
                 <span class="name">
                     {{name}}
@@ -103,7 +103,7 @@ export default {
 </script>
 <style lang="scss">
 @import "@/assets/styles/vars.scss";
-.product{
+.product-box{
     font-family: $main-font;
     width: 100%;
     height: 200px;

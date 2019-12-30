@@ -57,10 +57,10 @@ export default {
         font-family: $main-font;
         border-radius: 10px;
         box-shadow: 0px 0px 10px grey;
-        height: 50px;
-        width: 90%;
-        margin: 1rem auto;
+        min-height: 50px;
+        margin: 1rem 0px;
         display: flex;
+        flex-wrap: wrap;
         background: $lightWhiteBG;
         justify-content: space-between;
         align-items: center;

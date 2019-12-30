@@ -60,7 +60,7 @@ export default {
         display: flex;
         flex-direction: column;
         direction: rtl;
-        padding: 0px 15px;
+        padding: 1rem;
         .rtl{
             text-align: right;
             direction: rtl;
@@ -126,4 +126,10 @@ export default {
             font-size: 1.5rem;
         }
     }
+
+@media only screen and (min-width: 577px) {
+    .store-form{
+      padding: 0px 30%;
+    }
+}    
 </style>

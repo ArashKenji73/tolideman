@@ -5,7 +5,7 @@
             <span class="CustomerStatus" @click="activeClass">وضعیت مشتریان</span>
         </div>    
 
-        <component data-aos="fade-down" :is="ActiveComponent"></component>
+        <component data-aos="fade-down" :is="ActiveComponent" class="component-wrapper"></component>
 
     </div>    
 </template>
@@ -60,4 +60,20 @@ export default {
             border-radius: 20px;
         }
     }
+
+    .component-wrapper{
+        padding: 0px 1rem;
+    }
+
+@media only screen and (min-width: 577px) {
+    .statistic-tabs{
+        span{
+            flex-grow: 1;
+            text-align: center;
+        }
+    }
+    .component-wrapper{
+        padding: 1rem 30%;
+    }
+}      
 </style>

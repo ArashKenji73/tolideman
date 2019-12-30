@@ -15,30 +15,43 @@ export default {
 </script>
 <style lang="scss">
 @import "@/assets/styles/vars.scss";
-.main-page-block{
-    font-family: NavbarFont;
-    direction: rtl;
-    display: flex;
-    align-items: center;
-    height: 60px;
-    background: $lightWhiteBG;
-    box-sizing: border-box;
-    border-right: 15px;
+.main-block-link{
     margin: 1rem 0px;
-    border-right: 15px solid;
-    border-radius: 10px;
-    cursor: pointer;
-    .block-icon{
+    .main-page-block{
+        font-family: NavbarFont;
+        direction: rtl;
         display: flex;
         align-items: center;
-        justify-content: center;
-        width: 60px;
-        font-size: 2.5rem;
-        margin-left: 10px;
+        height: 60px;
+        background: $lightWhiteBG;
+        box-sizing: border-box;
+        border-right: 15px;
+        border-right: 15px solid;
+        border-radius: 10px;
+        cursor: pointer;
+        .block-icon{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            font-size: 2.5rem;
+            margin-left: 10px;
+        }
+        .block-title{
+            font-size: 1.2rem;
+            color: #4D5656;
+        }
     }
-    .block-title{
-        font-size: 1.2rem;
-        color: #4D5656;
+}
+
+
+@media only screen and (min-width: 577px) {
+    .main-block-link{
+        width: 48%;
+        margin: 1%;
+        .main-page-block{
+            height: 100%;
+        }
     }
 }
 </style>

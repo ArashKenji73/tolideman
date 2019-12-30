@@ -1,5 +1,5 @@
 <template>
-    <div class="seller" data-aos="fade-down">
+    <div class="seller-box" data-aos="fade-down">
         <div class="header">
             <div class="seller-profile-img"></div>
             <div class="seller-info">
@@ -49,8 +49,9 @@
         <DeleteSellerModal v-show="isDeleteModalVisible" @close="closeDeleteModal">
             <span slot="header">فروشنده {{name}} {{family}} پاک شود؟</span>
             <span slot="body">
-                <form class="add-seller-form">
+                <form class="delete-seller-form">
                     <button class="btn btn-danger" type="submit">پاک کردن</button>
+                    <button class="btn btn-info">انصراف</button>
                 </form>
             </span>
         </DeleteSellerModal>  
@@ -103,7 +104,7 @@ export default {
 </script>
 <style lang="scss">
 @import "@/assets/styles/vars.scss";
-.seller{
+.seller-box{
     font-family: $main-font;
     display: flex;
     flex-direction: column;
@@ -231,6 +232,14 @@ export default {
                 border-radius: 50%;
             }
         }
+    }
+}
+
+
+.delete-seller-form{
+    display: flex;
+    button{
+        flex-grow: 1;
     }
 }
 </style>

@@ -96,4 +96,12 @@
     .modal-fade-leave-active {
         transition: opacity .5s ease
     }
+
+@media only screen and (min-width: 577px) {
+    .custom-modal-backdrop {
+      .custom-modal{
+          width: 40%;
+      }
+    }    
+}    
 </style>
